@@ -1,0 +1,10 @@
+INSERT INTO book (isbn, title, year, price, genre) values ('1471156265', 'It Ends with Us: A Novel', 2016, 9.49, 'Romance Novel');
+INSERT INTO book (isbn, title, year, price, genre) values ('1408711702', 'Fantastic Beasts: The Crimes of Grindelwald', 2018, 19.99, 'Contemporary Fiction');
+INSERT INTO book (isbn, title, year, price, genre) values ('1338790234', 'The Christmas Pig', 2021, 12.99, 'Children''s Literature');
+INSERT INTO author (name, birthday) values ('Colleen Hoover', '1977-02-10');
+INSERT INTO author (name, birthday) values ('J. K. Rowling', '1968-02-10');
+INSERT INTO author (name, birthday) values ('Jim Field', '1958-02-10');
+INSERT INTO book_author (book_isbn, author_name) values ('1471156265', 'Colleen Hoover');
+INSERT INTO book_author (book_isbn, author_name) values ('1408711702', 'J. K. Rowling');
+INSERT INTO book_author (book_isbn, author_name) values ('1338790234', 'J. K. Rowling');
+INSERT INTO book_author (book_isbn, author_name) values ('1338790234', 'Jim Field');
