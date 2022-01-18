@@ -24,7 +24,7 @@ Author search is strictly exact match.\
 
 #### Update Book
 Update a existing book from the bookstore.\
-`curl -v -X PUT localhost:8080/books/ -H 'Content-Type:application/json' -d '{"isbn":"1250839378","title":"Quantum of Nightmares (Laundry Files, 11)","year":2022,"price":25.99,"genre":"Science Fiction & Fantasy","authors":[{"name":"Charles Stross","birthday":"1953-12-10"}]}'`
+`curl -v -X PUT localhost:8080/books/isbn/1250839378 -H 'Content-Type:application/json' -d '{"isbn":"1250839378","title":"Quantum of Nightmares (Laundry Files, 11)","year":2022,"price":25.99,"genre":"Science Fiction & Fantasy","authors":[{"name":"Charles Stross","birthday":"1953-12-10"}]}'`
 
 #### Delete Book
 Delete a existing book from the bookstore.\
