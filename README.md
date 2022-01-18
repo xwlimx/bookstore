@@ -1,5 +1,5 @@
 # Bookstore-SpringBoot-JPA-HATEOAS
-This project depicts the Spring Boot Example with Spring Data JPA and HATEOAS Example
+This project depicts a Spring Boot Example with Spring Data JPA and HATEOAS
 
 ## Libraries used
 - Spring Boot Starter Data Jpa
