@@ -13,10 +13,10 @@ public interface BookRepository extends CrudRepository<Book, String> {
 	/**
 	 * For wildcard expression binding, use CONCAT('%', ? '%')
 	 */
-	@Query("SELECT DISTINCT a FROM Book a JOIN FETCH a.authors b WHERE LOWER(a.title) LIKE LOWER(CONCAT('%', :title, '%'))")
+	@Query("FROM Book a WHERE LOWER(a.title) LIKE LOWER(CONCAT('%', :title, '%'))")
 	Optional<List<Book>> findByTitleContaining(String title);
 
-	@Query("FROM Book a JOIN FETCH a.authors b WHERE LOWER(b.name) = LOWER(:name)")
+	@Query("FROM Book a JOIN a.authors b WHERE LOWER(b.name) = LOWER(:name)")
 	Optional<List<Book>> findByAuthorName(String name);
 
 }
