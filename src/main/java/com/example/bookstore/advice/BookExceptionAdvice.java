@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.example.bookstore.exception.BaseException;
 import com.example.bookstore.exception.BookExistException;
-import com.example.bookstore.exception.IncorrectAuthorNameException;
-import com.example.bookstore.exception.IncorrectIsbnException;
-import com.example.bookstore.exception.IncorrectTitleException;
+import com.example.bookstore.exception.InvalidAuthorNameException;
+import com.example.bookstore.exception.InvalidIsbnException;
+import com.example.bookstore.exception.InvalidTitleException;
 
 @ControllerAdvice
 public class BookExceptionAdvice {
 
-	@ExceptionHandler({ IncorrectIsbnException.class, //
-			IncorrectTitleException.class, //
-			IncorrectAuthorNameException.class })
+	@ExceptionHandler({ InvalidAuthorNameException.class, //
+			InvalidIsbnException.class, //
+			InvalidTitleException.class })
 	ResponseEntity<?> bookNotFoundHandler(BaseException e) {
 		Map<String, Object> errorResponse = new HashMap<>();
 		errorResponse.put("error", e.getMessage());
