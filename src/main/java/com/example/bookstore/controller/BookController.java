@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.bookstore.assembler.BookModelAssembler;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.exception.BookExistException;
-import com.example.bookstore.exception.IncorrectAuthorNameException;
-import com.example.bookstore.exception.IncorrectIsbnException;
-import com.example.bookstore.exception.IncorrectTitleException;
+import com.example.bookstore.exception.InvalidAuthorNameException;
+import com.example.bookstore.exception.InvalidIsbnException;
+import com.example.bookstore.exception.InvalidTitleException;
 import com.example.bookstore.repository.BookRepository;
 
 @RestController
@@ -50,20 +50,20 @@ public class BookController {
 		return repository.findById(isbn) //
 				.map(assembler::toModel) //
 				.map(ResponseEntity::ok) //
-				.orElseThrow(() -> new IncorrectIsbnException(isbn));
+				.orElseThrow(() -> new InvalidIsbnException(isbn));
 	}
 
 	@GetMapping("/title/{title}")
 	public ResponseEntity<CollectionModel<EntityModel<Book>>> findByTitle(@PathVariable String title) {
 		List<Book> books = repository.findByTitleContaining(title) //
-				.orElseThrow(() -> new IncorrectTitleException(title));
+				.orElseThrow(() -> new InvalidTitleException(title));
 		return ResponseEntity.ok(assembler.toCollectionModel(books));
 	}
 
 	@GetMapping("/author/{name}")
 	public ResponseEntity<CollectionModel<EntityModel<Book>>> findByAuthorName(@PathVariable String name) {
 		List<Book> books = repository.findByAuthorName(name) //
-				.orElseThrow(() -> new IncorrectAuthorNameException(name));
+				.orElseThrow(() -> new InvalidAuthorNameException(name));
 		return ResponseEntity.ok(assembler.toCollectionModel(books));
 	}
 
@@ -81,7 +81,7 @@ public class BookController {
 					return repository.save(b);
 				}).map(assembler::toModel) //
 				.map(ResponseEntity::ok) //
-				.orElseThrow(() -> new IncorrectIsbnException(isbn));
+				.orElseThrow(() -> new InvalidIsbnException(isbn));
 	}
 
 	@PostMapping("/")
@@ -95,7 +95,7 @@ public class BookController {
 
 	@DeleteMapping("/isbn/{isbn}")
 	public ResponseEntity<?> deleteBook(@PathVariable String isbn) {
-		repository.findById(isbn).orElseThrow(() -> new IncorrectIsbnException(isbn));
+		repository.findById(isbn).orElseThrow(() -> new InvalidIsbnException(isbn));
 		repository.deleteById(isbn);
 		return ResponseEntity.noContent().build();
 	}
